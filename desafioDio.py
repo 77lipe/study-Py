@@ -8,16 +8,29 @@ saldo = 0.0
 lancamentos = entrada.split(',')
 print(lancamentos[0])
 
-list_valor = []
+R = []
+D = []
 
 for lancamento in lancamentos:
     tipo, valor = lancamento.strip().split()
     valor = float(valor)
     tipo = str(tipo)
-    print("Tipo:", tipo, "Valor:",valor)
-
-    list_valor.append(valor)
+    #print("Tipo:", tipo, "Valor:",valor)
+    if tipo == "R":
+        R.append(valor)
+    else:
+        D.append(valor)
     # TODO: Atualize o saldo conforme o tipo de lançamento ('R' soma, 'D' subtrai)
+
+
+
+valor_receita = sum(R)
+valor_despesas = sum(D)
+
+saldo = valor_receita - valor_despesas
+
+#print("lista R:", R)
+#print("lista D:", D)
 
 # Imprima o saldo final com duas casas decimais
 print(f"{saldo:.2f}")
